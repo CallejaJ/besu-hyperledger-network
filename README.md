@@ -109,6 +109,21 @@ The network is verified through direct **JSON-RPC** queries to monitor node heal
    curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["enode://..."]],"id":1}' http://localhost:8001
    ```
 
+## Deliverables
+
+This project requires the following evidence for submission:
+
+### Network Operation Screenshots
+- [ ] **Node 1 Startup** — Capture terminal showing successful boot.
+- [ ] **Network Sync** — Capture terminal showing block production.
+- [ ] **Validator Metrics** — Result of `ibft_getSignerMetrics`.
+
+### RPC Verification
+| Query | Expected Result |
+|---|---|
+| **admin_peers** | List containing at least 2 peers for Node 1. |
+| **ibft_getSignerMetrics** | Proof that all 3 (or 4) validators are signing blocks. |
+
 ---
 
 Built for Hyperledger Besu.
