@@ -1,6 +1,6 @@
 # Besu Hyperledger Network
 
-<div align="center">
+<div align="left">
     <img src="https://img.shields.io/badge/Besu-24.4.1-blue?style=for-the-badge&logo=hyperledger" alt="Besu" />
     <img src="https://img.shields.io/badge/Consensus-IBFT_2.0-green?style=for-the-badge" alt="Consensus" />
     <img src="https://img.shields.io/badge/Ethereum-Fork_Latest-3C3C3D?style=for-the-badge&logo=ethereum" alt="Ethereum" />
@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/badge/Gas-Free_Network-lightgrey?style=for-the-badge" alt="Gas" />
 </div>
 
-<p align="center">
+<p align="left">
     <i>A local permissioned Ethereum blockchain implementation using the IBFT 2.0 consensus protocol and Besu's native permissioning system.</i>
 </p>
 
@@ -16,31 +16,31 @@
 
 The network consists of multiple nodes running locally, each configured with specific **P2P** and **RPC** ports to simulate a distributed environment on a single host.
 
-| Node | Name | P2P Port | RPC Port | Initial Role |
-|---|---|---|---|---|
-| **Node 1** | alumno-nodo-1 | 7001 | 8001 | Bootnode / Validator |
-| **Node 2** | alumno-nodo-2 | 7002 | 8002 | Validator |
-| **Node 3** | alumno-nodo-3 | 7003 | 8003 | Validator |
-| **Node 4** | alumno-nodo-4 | 7004 | 8004 | Dynamic Validator |
+| Node       | Name          | P2P Port | RPC Port | Initial Role         |
+| ---------- | ------------- | -------- | -------- | -------------------- |
+| **Node 1** | alumno-nodo-1 | 7001     | 8001     | Bootnode / Validator |
+| **Node 2** | alumno-nodo-2 | 7002     | 8002     | Validator            |
+| **Node 3** | alumno-nodo-3 | 7003     | 8003     | Validator            |
+| **Node 4** | alumno-nodo-4 | 7004     | 8004     | Dynamic Validator    |
 
 ## Consensus Model
 
 This network utilizes **IBFT 2.0** (Istanbul Byzantine Fault Tolerance), a Proof of Authority (PoA) consensus mechanism designed for private and permissioned networks.
 
-| Parameter | Value | Description |
-|---|---|---|
-| **Block Period** | 60s | The minimum time interval between block production. |
-| **Epoch Length** | 100 blocks | Number of blocks between validator set updates. |
-| **Request Timeout** | 120s | Time limit for consensus round completion. |
-| **Chain ID** | 1234 | Unique identifier for the local blockchain. |
+| Parameter           | Value      | Description                                         |
+| ------------------- | ---------- | --------------------------------------------------- |
+| **Block Period**    | 60s        | The minimum time interval between block production. |
+| **Epoch Length**    | 100 blocks | Number of blocks between validator set updates.     |
+| **Request Timeout** | 120s       | Time limit for consensus round completion.          |
+| **Chain ID**        | 1234       | Unique identifier for the local blockchain.         |
 
 ## System Architecture
 
-| Component | Role |
-|---|---|
-| **Bootnode** | Node 1 serves as the discovery point for all other peers. |
-| **Validator Nodes** | Nodes 1, 2, and 3 participate in the initial block validation. |
-| **RPC Interface** | HTTP JSON-RPC endpoint for management and chain interaction. |
+| Component                 | Role                                                                    |
+| ------------------------- | ----------------------------------------------------------------------- |
+| **Bootnode**              | Node 1 serves as the discovery point for all other peers.               |
+| **Validator Nodes**       | Nodes 1, 2, and 3 participate in the initial block validation.          |
+| **RPC Interface**         | HTTP JSON-RPC endpoint for management and chain interaction.            |
 | **Permissioning Manager** | Handles node-level access control via local configuration and PERM API. |
 
 ## Technology Stack
@@ -96,7 +96,7 @@ The network is verified through direct **JSON-RPC** queries to monitor node heal
 
    ```bash
    besu --config-file=nodo-4/config.toml
-   
+
    # Vote from existing validators
    curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_proposeValidatorVote","params":["0x814C7a105918F34B453BAAfa3b93C45Ff489Ad09", true],"id":1}' http://localhost:8001
    ```
@@ -114,14 +114,16 @@ The network is verified through direct **JSON-RPC** queries to monitor node heal
 This project requires the following evidence for submission:
 
 ### Network Operation Screenshots
+
 - [ ] **Node 1 Startup** — Capture terminal showing successful boot.
 - [ ] **Network Sync** — Capture terminal showing block production.
 - [ ] **Validator Metrics** — Result of `ibft_getSignerMetrics`.
 
 ### RPC Verification
-| Query | Expected Result |
-|---|---|
-| **admin_peers** | List containing at least 2 peers for Node 1. |
+
+| Query                     | Expected Result                                        |
+| ------------------------- | ------------------------------------------------------ |
+| **admin_peers**           | List containing at least 2 peers for Node 1.           |
 | **ibft_getSignerMetrics** | Proof that all 3 (or 4) validators are signing blocks. |
 
 ---
