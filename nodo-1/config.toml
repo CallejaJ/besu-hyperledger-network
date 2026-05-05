@@ -1,0 +1,16 @@
+# Nodo 1: alumno-nodo-1
+data-path="data"
+genesis-file="../genesis.json"
+
+p2p-enabled=true
+p2p-host="127.0.0.1"
+p2p-port=7001
+
+rpc-http-enabled=true
+rpc-http-host="127.0.0.1"
+rpc-http-port=8001
+rpc-http-api=["ADMIN", "ETH", "NET", "IBFT", "PERM"]
+host-allowlist=["*"]
+rpc-http-cors-origins=["*"]
+
+min-gas-price=0
