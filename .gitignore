@@ -1,0 +1,4 @@
+# Besu data directories
+**/data/
+temp_config/
+generator_config.json

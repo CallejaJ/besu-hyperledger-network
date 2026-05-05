@@ -97,8 +97,11 @@ The network is verified through direct **JSON-RPC** queries to monitor node heal
    ```bash
    besu --config-file=nodo-4/config.toml
 
-   # Vote from existing validators
+   # Vote from Node 1
    curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_proposeValidatorVote","params":["0x814C7a105918F34B453BAAfa3b93C45Ff489Ad09", true],"id":1}' http://localhost:8001
+
+   # Vote from Node 2 (needed for majority)
+   curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_proposeValidatorVote","params":["0x814C7a105918F34B453BAAfa3b93C45Ff489Ad09", true],"id":1}' http://localhost:8002
    ```
 
 4. **Dynamic Permissioning**:
@@ -106,7 +109,7 @@ The network is verified through direct **JSON-RPC** queries to monitor node heal
    Add Node 3 to the allowlist while the network is running:
 
    ```bash
-   curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["enode://..."]],"id":1}' http://localhost:8001
+   curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["enode://cb614ce733979ae9acfd69bd8e85e9346030f65f23438562dc593ae9cb789d6f2bf6053e44e8468a11f1fe1fb19c728e7b84169009f4b71e10f2b9c4cf2481ff@127.0.0.1:7003"]],"id":1}' http://localhost:8001
    ```
 
 ## Deliverables

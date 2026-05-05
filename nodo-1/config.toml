@@ -1,6 +1,6 @@
 # Nodo 1: alumno-nodo-1
-data-path="data"
-genesis-file="../genesis.json"
+data-path="nodo-1/data"
+genesis-file="genesis.json"
 
 p2p-enabled=true
 p2p-host="127.0.0.1"
